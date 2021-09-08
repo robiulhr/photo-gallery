@@ -1,7 +1,7 @@
 let imagecontainer = document.getElementById("image-container")
 let buttoncontainer =document.getElementById("button-container")
 let loader = document.getElementById("loader")
-
+let downloadBtn = document.getElementById("downloadBtn")
 const apiKey = "FBU7sxgiVi6nmwj5JFtZoSygXRTDtaw6otvbeN7kdDI"
 const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=30`
 
@@ -12,14 +12,18 @@ function displayPhotos (){
       // creating ancor tag
           const imgLink = document.createElement("a");
           imgLink.setAttribute("href",image.urls.regular)
+          imgLink.setAttribute("target","_blank")
 
         //   imgLink.setAttribute("download",image.urls.regular)
         // creating download button
-        // const downloadBtn = document.createElement("a")
-        // downloadBtn.setAttribute("type","submit")
-        // downloadBtn.setAttribute("class","btn")
-        // // downloadBtn.setAttribute("class"," second")
-        // downloadBtn.innerText = "Download"
+        const downloadBtn = document.createElement("a")
+        downloadBtn.setAttribute("type","submit")
+        downloadBtn.classList.add("btn", "second");
+        downloadBtn.setAttribute("id","downloadBtn")
+        downloadBtn.setAttribute("href",image.urls.regular)
+
+
+        downloadBtn.innerText = "Download"
         // creating image
         const img = document.createElement("img");
         img.setAttribute("title",image.alt_description)
@@ -27,8 +31,8 @@ function displayPhotos (){
         // appending child
         imgLink.appendChild(img)
         imagecontainer.appendChild(imgLink)
-        // imgLink.appendChild(downloadBtn)
-
+        imgLink.appendChild(downloadBtn)
+        
 
 
         //   console.log(image.urls.regular);
@@ -72,3 +76,5 @@ getPhotos()
       },1000)
     }
 })
+
+// downloadBtn.addEventListener("click",)
